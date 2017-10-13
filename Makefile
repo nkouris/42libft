@@ -64,14 +64,16 @@ SRC += ft_toupper.c
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(FLAGS) libft.h $(SRC)
-	ar -rcs $(NAME) $(OBJ)
+$(NAME): $(SRC)
+	@ echo "Compiling library..."
+	@ $(CC) $(FLAGS) libft.h $(SRC)
+	@ ar -rcs $(NAME) $(OBJ)
 
-clean: 
-	/bin/rm -f $(OBJ)
+clean:
+	@ echo "Cleaning folder..."	
+	@ /bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@ /bin/rm -f $(NAME)
 
 re: fclean all
