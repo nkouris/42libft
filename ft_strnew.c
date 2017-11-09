@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 16:52:12 by nkouris           #+#    #+#             */
-/*   Updated: 2017/09/29 02:05:32 by nkouris          ###   ########.fr       */
+/*   Updated: 2017/11/01 14:34:50 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,5 @@ char	*ft_strnew(size_t size)
 	bloc = (char*)ft_memalloc(sizeof(char) * size);
 	if (!bloc)
 		return (0);
-	while (--size > 0)
-		bloc[size] = '\0';
-	bloc[0] = '\0';
 	return (bloc);
 }

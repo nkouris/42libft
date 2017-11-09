@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 11:55:31 by nkouris           #+#    #+#             */
-/*   Updated: 2017/09/29 00:28:03 by nkouris          ###   ########.fr       */
+/*   Updated: 2017/11/07 16:52:19 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	c_s1 = (char*)s1;
-	new = ft_strnew((len1 + len2 + 1));
+	new = ft_strnew((len1 + len2));
 	if (!new)
 		return (0);
 	while (len1-- >= 0)
