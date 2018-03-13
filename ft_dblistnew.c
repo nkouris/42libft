@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_dblistnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/25 10:25:28 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/06 03:41:39 by nkouris          ###   ########.fr       */
+/*   Created: 2018/02/01 14:12:11 by nkouris           #+#    #+#             */
+/*   Updated: 2018/02/12 02:30:07 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content, size_t content_size)
+t_dblist	*ft_dblistnew(void *content, size_t content_size)
 {
-	t_list	*head;
+	t_dblist	*head;
 
-	if (!(head = (t_list *)ft_memalloc(sizeof(t_list))))
-		exit (0);
-	if (!(head = (t_list *)ft_memalloc(sizeof(t_list)))
+	if (!(head = (t_dblist *)ft_memalloc(sizeof(t_dblist)))
 		|| !(head->data = ft_memalloc(content_size)))
 		return (0);
 	if (!content)
@@ -29,16 +27,18 @@ t_list	*ft_lstnew(void *content, size_t content_size)
 	return (head);
 }
 
-void	ft_lstadd(t_list **alst, void *content, size_t content_size)
+t_dblist	*ft_dblistpop(t_dblist *node)
 {
-	t_list	*new;
+	t_dblist	*tprec;
+	t_dblist	*tnext;
 
-	if (!*alst)
-	{
-		*alst = ft_lstnew(content, content_size);
-		return;
-	}
-	new = ft_lstnew(content, content_size);
-	new->next = *alst;
-	*alst = new;
+	tprec = node->prec;
+	tnext = node->next;
+	node->next = 0;
+	node->prec = 0;
+	if (tprec)
+		tprec->next = tnext;
+	if (tnext)
+		tnext->prec = tprec;
+	return (tnext);
 }

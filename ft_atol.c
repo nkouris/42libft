@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/20 15:37:30 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/04 17:26:13 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/02 17:29:39 by nkouris           #+#    #+#             */
+/*   Updated: 2018/03/02 17:29:41 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isspace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\r' ||
-			c == '\n' || c == '\v' || c == '\f')
-		return (1);
-	return (0);
-}
-
-int		ft_skip_spaces(const char *str)
+static int	skip_spaces(const char *str)
 {
 	int i;
 
@@ -33,18 +25,18 @@ int		ft_skip_spaces(const char *str)
 	return (i);
 }
 
-int		ft_atoi(const char *str)
+long		ft_atoi_long(const char *str)
 {
-	int sign;
-	int j;
-	int i;
+	int		sign;
+	int		i;
+	long	j;
 
 	sign = 1;
 	i = 0;
 	j = 0;
 	while (str[i] != '\0')
 	{
-		i = ft_skip_spaces(str);
+		i = skip_spaces(str);
 		if (str[i] == '-')
 		{
 			sign = -1;
