@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 15:37:30 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/04 17:26:13 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/03/13 18:53:10 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_atoi(const char *str)
 		}
 		else if (str[i] == '+')
 			i++;
-		while (str[i] >= '0' && str[i] <= '9')
+		while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 		{
 			j = (j * 10) + (str[i] - 48);
 			i++;

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_queue.c                                         :+:      :+:    :+:   */
+/*   ft_fifoqueue.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 16:33:00 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/13 12:19:18 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/13 09:41:27 by nkouris           #+#    #+#             */
+/*   Updated: 2018/03/15 12:05:19 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-**		Using a doubly linked list, as defined in libft.h
+**		Using a singly linked list, as defined in libft.h
 **				|
 **				first -> (next)
 **				(next)
@@ -22,27 +22,27 @@
 **				.
 **				.
 **				.
-**				(prec)
-**				last -> (prec)
+**				.	
+**				last
 **				|
 */
 
-int			ft_enqueue(t_queue **key, void *data, size_t size)
+int			ft_ffenqueue(t_ffqueue **key, void *data, size_t size)
 {
-	t_dblist	*add;
+	t_list	*add;
 
-	if (!(add = ft_dblistnew(data, size)))
+	if (!(add = ft_listnew(data, size)))
 		return (0);
 	if (!(*key)->first)
-		ft_pushfront(*key, add);
+		ft_ffpushfront(*key, add);
 	else
-		ft_pushend(*key, add);
+		ft_ffpushend(*key, add);
 	return (1);
 }
 
-void		ft_pushfront(t_queue *key, t_dblist *data)
+void		ft_ffpushfront(t_ffqueue *key, t_list *data)
 {
-	t_dblist	*temp;
+	t_list	*temp;
 
 	if (key)
 	{
@@ -56,16 +56,14 @@ void		ft_pushfront(t_queue *key, t_dblist *data)
 		{
 			temp = key->first;
 			data->next = temp;
-			data->prec = 0;
-			temp->prec = data;
 			key->first = data;
 		}
 	}
 }
 
-void		ft_pushend(t_queue *key, t_dblist *data)
+void		ft_ffpushend(t_ffqueue *key, t_list *data)
 {
-	t_dblist	*temp;
+	t_list	*temp;
 
 	if (key)
 	{
@@ -73,13 +71,11 @@ void		ft_pushend(t_queue *key, t_dblist *data)
 		if (!key->last)
 		{
 			key->last = data;
-			data->prec = key->first;
 			key->first->next = data;
 		}
 		else
 		{
 			temp = key->last;
-			data->prec = temp;
 			data->next = 0;
 			temp->next = data;
 			key->last = data;
@@ -87,9 +83,9 @@ void		ft_pushend(t_queue *key, t_dblist *data)
 	}
 }
 
-t_dblist	*ft_popfront(t_queue *key)
+t_list	*ft_ffpopfront(t_ffqueue *key)
 {
-	t_dblist	*temp;
+	t_list	*temp;
 
 	if (!key)
 		return (0);
@@ -100,7 +96,6 @@ t_dblist	*ft_popfront(t_queue *key)
 			key->qlen ? key->qlen-- : key->qlen;
 			temp = key->first;
 			key->first = key->first->next;
-			key->first ? key->first->prec = 0 : key->first;
 			temp->next = 0;
 			return (temp);
 		}
@@ -108,9 +103,9 @@ t_dblist	*ft_popfront(t_queue *key)
 	return (0);
 }
 
-t_dblist	*ft_popend(t_queue *key)
+t_list	*ft_ffpopend(t_ffqueue *key)
 {
-	t_dblist	*temp;
+	t_list	*temp;
 
 	if (!key)
 		return (0);
@@ -120,9 +115,7 @@ t_dblist	*ft_popend(t_queue *key)
 		{
 			key->qlen ? key->qlen-- : key->qlen;
 			temp = key->last;
-			key->last = key->last->prec;
 			key->last ? key->last->next = 0 : key->last;
-			temp->prec = 0;
 			return (temp);
 		}
 	}

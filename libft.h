@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 23:23:57 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/08 01:35:03 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/03/15 12:05:17 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
+# include <errno.h>
 
 #define BASEKEY "0123456789abcdef"
 
@@ -43,6 +44,15 @@ typedef struct		s_queue
 	int				min;
 	int				max;
 }					t_queue;
+
+typedef struct		s_ffqueue
+{
+	t_list			*first;
+	t_list			*last;
+	int				qlen;
+	int				min;
+	int				max;
+}					t_ffqueue;
 
 void				ft_bzero(void *s, size_t n);
 int					ft_isalpha(int c);
@@ -108,7 +118,7 @@ t_dblist			*ft_popfront(t_queue *key);
 t_dblist			*ft_popend(t_queue *key);
 int					ft_isspace(char c);
 int					ft_skip_spaces(const char *str);
-t_dblist			*ft_mergesort(t_dblist *head, int (*f)(void *, void *));
+t_dblist			*ft_dblmergesort(t_dblist *head, int (*f)(void *, void *));
 t_dblist			*ft_dblistnew(void *content, size_t content_size);
 int					ft_enqueue(t_queue **key, void *data, size_t size);
 void				ft_queue_postsort(t_queue *key);
@@ -118,10 +128,21 @@ int					ft_numlen(int num);
 int					ft_atoi_base(const char *str, int base);
 long				ft_atol_base(const char *str, int base);
 char				*ft_strnchr(const char *s, int c);
-t_list				*ft_lstnew(void *content, size_t content_size);
-void				ft_lstadd(t_list **alst, void *content, size_t content_size);
+t_list				*ft_listnew(void *content, size_t content_size);
+void				ft_listadd(t_list **alst, void *content, size_t content_size);
+t_list				*ft_listnew(void *content, size_t content_size);
 int					ft_nnlookup(char *key, const char *str,
 					size_t len, char b);
+t_list				*ft_listpopfront(t_list **node);
+t_list				*ft_listcritpop(t_list **node, int (*f)(void *));
+t_list				*ft_sublistpop(t_list **node, int (*f)(void *));
 
+int					ft_ffenqueue(t_ffqueue **key, void *data, size_t size);
+void				ft_ffpushfront(t_ffqueue *key, t_list *data);
+void				ft_ffpushend(t_ffqueue *key, t_list *data);
+t_list				*ft_ffpopfront(t_ffqueue *key);
+t_list				*ft_ffpopend(t_ffqueue *key);
+
+int					ft_error(void);
 
 #endif

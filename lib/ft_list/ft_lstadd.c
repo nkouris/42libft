@@ -6,13 +6,76 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/25 10:25:28 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/06 03:41:39 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/03/15 21:29:22 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content, size_t content_size)
+t_list	*ft_listcritpop(t_list **node, int (*f)(void *))
+{
+	t_list	*hold;
+	t_list	*prev;
+
+	hold = *node;
+	prev = 0;
+	while (hold)
+	{
+		if (f(hold->data))
+		{
+			if (hold == *node)
+				*node = (*node)->next;
+			else
+				prev->next = hold->next;
+			return (hold);
+		}
+		prev = hold;
+		hold = hold->next;
+	}
+	return (0);
+}
+
+t_list	*ft_sublistpop(t_list **node, int (*f)(void *))
+{
+	t_list	*hold;
+	t_list	*prev;
+	t_list	*ret;
+
+	hold = *node;
+	prev = 0;
+	ret = 0;
+	while (hold)
+	{
+		if (f(hold->data))
+		{
+			if (hold == *node)
+				*node = (*node)->next;
+			else
+				prev->next = hold->next;
+			if (!ret)
+				ret = hold;
+			else
+			{
+				hold->next = ret;
+				ret = hold;
+			}
+		}
+		prev = hold;
+		hold = hold->next;
+	}
+	return (ret ? ret : 0);
+}
+
+t_list	*ft_listpopfront(t_list **node)
+{
+	t_list	*hold;
+
+	hold = *node;
+	*node = (*node)->next;
+	return (hold);
+}
+
+t_list	*ft_listnew(void *content, size_t content_size)
 {
 	t_list	*head;
 
@@ -25,20 +88,19 @@ t_list	*ft_lstnew(void *content, size_t content_size)
 		content_size = 0;
 	head->data = ft_memmove(head->data, content, content_size);
 	head->d_size = content_size;
-	free(content);
 	return (head);
 }
 
-void	ft_lstadd(t_list **alst, void *content, size_t content_size)
+void	ft_listadd(t_list **alst, void *content, size_t content_size)
 {
 	t_list	*new;
 
 	if (!*alst)
 	{
-		*alst = ft_lstnew(content, content_size);
+		*alst = ft_listnew(content, content_size);
 		return;
 	}
-	new = ft_lstnew(content, content_size);
+	new = ft_listnew(content, content_size);
 	new->next = *alst;
 	*alst = new;
 }
