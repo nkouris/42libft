@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 23:23:57 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/15 12:05:17 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/03/18 15:26:59 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,10 @@ int					ft_atoi(const char *str);
 long				ft_atol(const char *str);
 char				**ft_strsplit(const char *s, char c);
 char				*ft_itoa(int n);
-void				ft_pushfront(t_queue *key, t_dblist *data);
-void				ft_pushend(t_queue *key, t_dblist *data);
-t_dblist			*ft_popfront(t_queue *key);
-t_dblist			*ft_popend(t_queue *key);
+void				ft_pushfirst(t_queue *key, t_dblist *data);
+void				ft_pushlast(t_queue *key, t_dblist *data);
+t_dblist			*ft_popfirst(t_queue *key);
+t_dblist			*ft_poplast(t_queue *key);
 int					ft_isspace(char c);
 int					ft_skip_spaces(const char *str);
 t_dblist			*ft_dblmergesort(t_dblist *head, int (*f)(void *, void *));
@@ -130,7 +130,6 @@ long				ft_atol_base(const char *str, int base);
 char				*ft_strnchr(const char *s, int c);
 t_list				*ft_listnew(void *content, size_t content_size);
 void				ft_listadd(t_list **alst, void *content, size_t content_size);
-t_list				*ft_listnew(void *content, size_t content_size);
 int					ft_nnlookup(char *key, const char *str,
 					size_t len, char b);
 t_list				*ft_listpopfront(t_list **node);
