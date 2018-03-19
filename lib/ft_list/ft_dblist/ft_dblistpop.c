@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_queue_util.c                                    :+:      :+:    :+:   */
+/*   ft_dblistpop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 15:35:09 by nkouris           #+#    #+#             */
-/*   Updated: 2018/02/12 00:54:35 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/18 17:37:10 by nkouris           #+#    #+#             */
+/*   Updated: 2018/03/18 18:04:24 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_dblist.h"
 
-void	ft_queue_postsort(t_queue *key)
+t_dblist	*ft_dblistpop(t_dblist *node)
 {
-	t_dblist	*temp;
+	t_dblist	*tprec;
+	t_dblist	*tnext;
 
-	temp = key->first;
-	if (temp)
-	{
-		while (temp->next)
-			temp = temp->next;
-		key->last = temp;
-	}
-}
-
-void	ft_queue_destruc(t_queue *key, t_dblist *(*f)(t_dblist *del))
-{
-	t_dblist	*temp;
-
-	temp = key->first;
-	while (temp)
-		temp = f(temp);
-	free(key);
+	tprec = node->prec;
+	tnext = node->next;
+	node->next = 0;
+	node->prec = 0;
+	if (tprec)
+		tprec->next = tnext;
+	if (tnext)
+		tnext->prec = tprec;
+	return (tnext);
 }
