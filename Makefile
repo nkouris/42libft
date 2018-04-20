@@ -1,6 +1,6 @@
 NAME = libft.a
 CFLAGS += -Wall -Werror -Wextra
-INCLUDES = -I lib/inc -I src/ -I inc/
+INCLUDES = -I inc/
 CC = gcc
 
 ################################################################################
@@ -21,29 +21,29 @@ SRCDIR_MEM = ft_memory/
 SRCDIR_NUM = ft_num/
 SRCDIR_STR = ft_string/
 
-OBJSRC += $(patsubst %, %.o, $(addprefix \
-		  $(addprefix $(SRCDIR), $(SRCDIR_IO)), \
-		  $(SRC_IO)))
-OBJSRC += $(patsubst %, %.o, $(addprefix \
-		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_FTPRINTF))))\
-		  $(SRC_IO_FTPRINTF))
+OBJSRC = $(patsubst %, %.o, $(addprefix \
+		 $(addprefix $(SRCDIR), $(SRCDIR_IO)), \
+		 $(SRC_IO)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_GNL))))\
-		  $(SRC_IO_GNL))
+		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_FTPRINTF))), \
+		  $(SRC_IO_FTPRINTF)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_LIST_DBLIST), $(SRCDIR_LIST_DBLIST))))\
-		  $(SRC_LIST_DBLIST))
+		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_GNL))), \
+		  $(SRC_IO_GNL)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_LIST_QUEUE), $(SRCDIR_LIST_QUEUE))))\
-		  $(SRC_LIST_QUEUE))
+		  $(addprefix $(SRCDIR_LIST_DBLIST), $(SRCDIR_LIST_DBLIST))), \
+		  $(SRC_LIST_DBLIST)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_LIST_SNGLIST), $(SRCDIR_LIST_SNGLIST))))\
-		  $(SRC_LIST_SNGLIST))
+		  $(addprefix $(SRCDIR_LIST_QUEUE), $(SRCDIR_LIST_QUEUE))), \
+		  $(SRC_LIST_QUEUE)))
+OBJSRC += $(patsubst %, %.o, $(addprefix \
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_LIST_SNGLIST), $(SRCDIR_LIST_SNGLIST))), \
+		  $(SRC_LIST_SNGLIST)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), $(SRCDIR_MEM)), \
 		  $(SRC_MEM)))
@@ -148,34 +148,34 @@ SRC_NUM =	\
 ################################################################################
 
 SRC_STR =	\
-			ft_nlookup
-			ft_nnlookup
-			ft_strcat
-			ft_strchr
-			ft_strclr
-			ft_strcmp
-			ft_strcpy
-			ft_strdel
-			ft_strdup
-			ft_strequ
-			ft_striter
-			ft_striteri
-			ft_strjoin
-			ft_strlcat
-			ft_strlen
-			ft_strmap
-			ft_strmapi
-			ft_strat
-			ft_strhr
-			ft_strmp
-			ft_strpy
-			ft_strnequ
-			ft_strnew
-			ft_strnstr
-			ft_strhr
-			ft_strsplit
-			ft_strstr
-			ft_strsub
+			ft_nlookup \
+			ft_nnlookup \
+			ft_strcat \
+			ft_strchr \
+			ft_strclr \
+			ft_strcmp \
+			ft_strcpy \
+			ft_strdel \
+			ft_strdup \
+			ft_strequ \
+			ft_striter \
+			ft_striteri \
+			ft_strjoin \
+			ft_strlcat \
+			ft_strlen \
+			ft_strmap \
+			ft_strmapi \
+			ft_strat \
+			ft_strhr \
+			ft_strmp \
+			ft_strpy \
+			ft_strnequ \
+			ft_strnew \
+			ft_strnstr \
+			ft_strhr \
+			ft_strsplit \
+			ft_strstr \
+			ft_strsub \
 			ft_strtrim
 
 ################################################################################
@@ -184,10 +184,9 @@ SRC_STR =	\
 
 all: $(NAME)
 
-debug: CFLAGS += -g -fsanitize=address -fsanitize=null
-	$(NAME)
+debug: CFLAGS += -g -fsanitize=address -fsanitize=null $(NAME)
 
-$(NAME): $(LIBFT) $(OBJSRC)
+$(NAME): $(OBJSRC)
 	@ echo "$(YELLOW)Building library$(RES)"
 	ar -rcs $(OBJSRC) $(NAME)
 
