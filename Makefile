@@ -8,22 +8,42 @@ CC = gcc
 ################################################################################
 
 SRCDIR = src/
-SRCDIR_CHAR = ft_char/
 SRCDIR_IO = ft_io/
+SRCDIR_IO_FTPRINTF = ft_printf/
+SRCDIR_IO_GNL = gnl/
 SRCDIR_LIST = ft_list/
+SRCDIR_LIST_DBLIST = ft_dblist/
+#SRCDIR_LIST_PQUEUE = ft_pqueue/
+SRCDIR_LIST_QUEUE = ft_queue/
+SRCDIR_LIST_SNGLIST = ft_snglist/
+#SRCDIR_LIST_STACK = ft_stack/
 SRCDIR_MEM = ft_memory/
 SRCDIR_NUM = ft_num/
 SRCDIR_STR = ft_string/
 
 OBJSRC += $(patsubst %, %.o, $(addprefix \
-		  $(addprefix $(SRCDIR), $(SRCDIR_CHAR)), \
-		  $(SRC_CHAR)))
-OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), $(SRCDIR_IO)), \
 		  $(SRC_IO)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
-		  $(addprefix $(SRCDIR), $(SRCDIR_LIST)), \
-		  $(SRC_LIST)))
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_FTPRINTF))))\
+		  $(SRC_IO_FTPRINTF))
+OBJSRC += $(patsubst %, %.o, $(addprefix \
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_GNL))))\
+		  $(SRC_IO_GNL))
+OBJSRC += $(patsubst %, %.o, $(addprefix \
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_LIST_DBLIST), $(SRCDIR_LIST_DBLIST))))\
+		  $(SRC_LIST_DBLIST))
+OBJSRC += $(patsubst %, %.o, $(addprefix \
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_LIST_QUEUE), $(SRCDIR_LIST_QUEUE))))\
+		  $(SRC_LIST_QUEUE))
+OBJSRC += $(patsubst %, %.o, $(addprefix \
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_LIST_SNGLIST), $(SRCDIR_LIST_SNGLIST))))\
+		  $(SRC_LIST_SNGLIST))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), $(SRCDIR_MEM)), \
 		  $(SRC_MEM)))
@@ -45,12 +65,118 @@ CYAN = \033[1;36m
 RES = \033[0m
 
 ################################################################################
-# TERMIO SOURCE FILES                                                          #
+# IO SOURCE FILES                                                              #
 ################################################################################
 
 # AUTOCOMPLETE
-SRC_CHAR =	\
-			
+SRC_IO =	\
+     		 ft_putchar \
+     		 ft_putchar_fd \
+     		 ft_putendl \
+     		 ft_putendl_fd \
+     		 ft_putnbr \
+     		 ft_putnbr_fd \
+     		 ft_putstr \
+     		 ft_putstr_fd
+
+SRC_IO_FTPRINTF =	\
+        	conversion_diou \
+        	conversion_sc \
+        	conversion_xp \
+        	dispatcher \
+        	misc \
+        	printflags \
+        	storeflags \
+        	ulitobase
+
+SRC_IO_GNL =	\
+	        get_next_line
+
+################################################################################
+# LIST SOURCE FILES                                                            #
+################################################################################
+
+SRC_LIST_DBLIST =	\
+	        ft_dblistnew \
+	        ft_dblistpop \
+	        ft_dblmergesort
+
+SRC_LIST_QUEUE =	\
+        	ft_enqueue \
+        	ft_popfirst \
+        	ft_poplast \
+        	ft_pushfirst \
+        	ft_pushlast \
+        	ft_queue_postmsort \
+        	ft_queuedel
+
+SRC_LIST_SNGLIST =	\
+        	ft_listadd \
+        	ft_listcritpop \
+        	ft_listnew \
+        	ft_sublistpop
+
+################################################################################
+# MEM SOURCE FILES                                                             #
+################################################################################
+
+SRC_MEM =	\
+			ft_bzero \
+			ft_memalloc \
+			ft_memccpy \
+			ft_memchr \
+			ft_memcmp \
+			ft_memcpy \
+			ft_memdel \
+			ft_memmove \
+			ft_memset
+
+################################################################################
+# NUM SOURCE FILES                                                             #
+################################################################################
+
+SRC_NUM =	\
+			ft_atoi \
+			ft_atoi_base \
+			ft_atol \
+			ft_atol_base \
+			ft_itoa \
+			ft_numlen
+
+################################################################################
+# NUM SOURCE FILES                                                             #
+################################################################################
+
+SRC_STR =	\
+			ft_nlookup
+			ft_nnlookup
+			ft_strcat
+			ft_strchr
+			ft_strclr
+			ft_strcmp
+			ft_strcpy
+			ft_strdel
+			ft_strdup
+			ft_strequ
+			ft_striter
+			ft_striteri
+			ft_strjoin
+			ft_strlcat
+			ft_strlen
+			ft_strmap
+			ft_strmapi
+			ft_strat
+			ft_strhr
+			ft_strmp
+			ft_strpy
+			ft_strnequ
+			ft_strnew
+			ft_strnstr
+			ft_strhr
+			ft_strsplit
+			ft_strstr
+			ft_strsub
+			ft_strtrim
 
 ################################################################################
 # RULES                                                                        #
