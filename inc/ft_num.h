@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_snglist.h                                       :+:      :+:    :+:   */
+/*   ft_num.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 18:10:05 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:12:32 by nkouris          ###   ########.fr       */
+/*   Created: 2018/04/19 18:18:39 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/19 18:25:36 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SNGLIST_H
-#define FT_SNGLIST_H
+#ifndef FT_NUM_H
+# define FT_NUM_H
 
-#include "ft_list.h"
+#define BASEKEY "0123456789abcdef"
+#define ATOI(x) (x & 0xF)
+#define ITOA(x) (x | 0x30)
 
-void	ft_listadd(t_list **alst, void *content, size_t content_size);
-t_list	*ft_listcritpop(t_list **node, int (*f)(void *));
-t_list	*ft_listnew(void *content, size_t content_size);
-t_list	*ft_sublistpop(t_list **node, int (*f)(void *));
+int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
+int					ft_atoi_base(const char *str, int base);
+long				ft_atol_base(const char *str, int base);
+char				*ft_itoa(int n);
+int					ft_numlen(int num);
 
 #endif

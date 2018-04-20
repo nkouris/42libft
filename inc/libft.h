@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblist.h                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 17:59:04 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:05:41 by nkouris          ###   ########.fr       */
+/*   Created: 2017/09/28 23:23:57 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/19 18:25:39 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DBLIST_H
-#define FT_DBLIST_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-#include "ft_list.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdio.h>
+# include <errno.h>
 
-t_dblist	*ft_dblistnew(void *content, size_t content_size);
-t_dblist	*ft_dblistpop(t_dblist *node);
-t_dblist	*ft_dblmergesort(t_dblist *head, int (*f)(void *, void *));
+# include "ft_char.h"
+# include "ft_io.h"
+# include "ft_list.h"
+# include "ft_memory.h"
+# include "ft_num.h"
 
 #endif

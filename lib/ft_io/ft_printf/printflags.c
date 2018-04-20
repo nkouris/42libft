@@ -6,11 +6,11 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:42:21 by nkouris           #+#    #+#             */
-/*   Updated: 2018/02/10 12:38:09 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/03/12 18:18:09 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 int			print_padding(t_flags *flags, int *strlen)
 {

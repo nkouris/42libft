@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/13 12:51:07 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/13 12:18:59 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/19 17:57:57 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <fcntl.h>
 # include <stdio.h>
-# include "../libft.h"
+# include "libft.h"
 
 # define BUFF_SIZE 512
 

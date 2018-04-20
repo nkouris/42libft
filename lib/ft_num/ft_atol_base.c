@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_num.h"
 
 static int	skip_spaces(const char *str)
 {

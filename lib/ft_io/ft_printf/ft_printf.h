@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftprintf.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 11:50:28 by nkouris           #+#    #+#             */
-/*   Updated: 2018/02/10 11:52:02 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/12 18:14:41 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/19 18:33:47 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTPRINTF_H
-# define FTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <limits.h>
-# include "../libft.h"
 # include <wchar.h>
+# include "libft.h"
 
 # define BASE_FLAGS "0123456789abcdef"
 # define HUINT 4294967296

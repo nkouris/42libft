@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_string.h"
 #include "ftprintf/ft_printf.h"
 
 static int		if_occur(char *look, const char *find, size_t ind, char b)
