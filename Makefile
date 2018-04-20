@@ -189,6 +189,7 @@ debug: CFLAGS += -g -fsanitize=address -fsanitize=null $(NAME)
 $(NAME): $(OBJSRC)
 	@ echo "$(YELLOW)Building library$(RES)"
 	ar -rc $@ $(OBJSRC)
+	@ echo "$(GREEN)Library Made$(RES)"
 
 %.o: %.c
 	@ echo "$(YELLOW)Compiling $<...$(RES)"
