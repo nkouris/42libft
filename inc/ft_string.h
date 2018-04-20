@@ -6,12 +6,14 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 18:21:08 by nkouris           #+#    #+#             */
-/*   Updated: 2018/04/19 18:22:35 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:46:38 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRING_H
 # define FT_STRING_H
+
+# include "libft.h"
 
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcat(char *dst, const char *src);

@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_listcritpop.c                                   :+:      :+:    :+:   */
+/*   ft_dblistpop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 18:07:26 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:09:39 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/18 17:37:10 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/20 13:16:39 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_snglist.h"
+#include "ft_list.h"
 
-t_list	*ft_listcritpop(t_list **node, int (*f)(void *))
+t_dblist	*ft_dblistpop(t_dblist *node)
 {
-	t_list	*hold;
-	t_list	*prev;
+	t_dblist	*tprec;
+	t_dblist	*tnext;
 
-	hold = *node;
-	prev = 0;
-	while (hold)
-	{
-		if (f(hold->data))
-		{
-			if (hold == *node)
-				*node = (*node)->next;
-			else
-				prev->next = hold->next;
-			return (hold);
-		}
-		prev = hold;
-		hold = hold->next;
-	}
-	return (0);
+	tprec = node->prec;
+	tnext = node->next;
+	node->next = 0;
+	node->prec = 0;
+	if (tprec)
+		tprec->next = tnext;
+	if (tnext)
+		tnext->prec = tprec;
+	return (tnext);
 }

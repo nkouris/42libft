@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushlast.c                                      :+:      :+:    :+:   */
+/*   ft_enqueue.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 15:24:12 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 15:49:21 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/18 15:20:46 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/20 13:16:57 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_queue.h"
+#include "ft_list.h"
 
 /*
 **		Using a doubly linked list, as defined in libft.h
@@ -27,26 +27,15 @@
 **				|
 */
 
-void		ft_pushlast(t_queue *key, t_dblist *data)
+int			ft_enqueue(t_queue **key, void *data, size_t size)
 {
-	t_dblist	*temp;
+	t_dblist	*add;
 
-	if (key)
-	{
-		key->qlen++;
-		if (!key->last)
-		{
-			key->last = data;
-			data->prec = key->first;
-			key->first->next = data;
-		}
-		else
-		{
-			temp = key->last;
-			data->prec = temp;
-			data->next = 0;
-			temp->next = data;
-			key->last = data;
-		}
-	}
+	if (!(add = ft_dblistnew(data, size)))
+		return (0);
+	if (!(*key)->first)
+		ft_pushfirst(*key, add);
+	else
+		ft_pushlast(*key, add);
+	return (1);
 }

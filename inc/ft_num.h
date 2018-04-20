@@ -6,12 +6,14 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 18:18:39 by nkouris           #+#    #+#             */
-/*   Updated: 2018/04/19 18:25:36 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:46:26 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_NUM_H
 # define FT_NUM_H
+
+# include "libft.h"
 
 #define BASEKEY "0123456789abcdef"
 #define ATOI(x) (x & 0xF)

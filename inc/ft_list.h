@@ -6,12 +6,14 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 17:59:42 by nkouris           #+#    #+#             */
-/*   Updated: 2018/04/19 18:23:28 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 12:12:42 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LIST_H
 # define FT_LIST_H
+
+# include "libft.h"
 
 typedef struct		s_list
 {

@@ -6,12 +6,11 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 11:54:03 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/08 01:33:37 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:48:46 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
-#include "ftprintf/ft_printf.h"
 
 static int		if_occur(char *look, const char *find, size_t ind, char b)
 {

@@ -6,11 +6,11 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 18:07:37 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:09:40 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:18:00 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_snglist.h"
+#include "ft_list.h"
 
 t_list	*ft_sublistpop(t_list **node, int (*f)(void *))
 {

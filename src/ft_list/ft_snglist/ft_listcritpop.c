@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblistnew.c                                     :+:      :+:    :+:   */
+/*   ft_listcritpop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/01 14:12:11 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:04:06 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/18 18:07:26 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/20 13:17:49 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dblist.h"
+#include "ft_list.h"
 
-t_dblist	*ft_dblistnew(void *content, size_t content_size)
+t_list	*ft_listcritpop(t_list **node, int (*f)(void *))
 {
-	t_dblist	*head;
+	t_list	*hold;
+	t_list	*prev;
 
-	if (!(head = (t_dblist *)ft_memalloc(sizeof(t_dblist)))
-		|| !(head->data = ft_memalloc(content_size)))
-		return (0);
-	if (!content)
-		content_size = 0;
-	head->data = ft_memmove(head->data, content, content_size);
-	head->d_size = content_size;
-	free(content);
-	return (head);
+	hold = *node;
+	prev = 0;
+	while (hold)
+	{
+		if (f(hold->data))
+		{
+			if (hold == *node)
+				*node = (*node)->next;
+			else
+				prev->next = hold->next;
+			return (hold);
+		}
+		prev = hold;
+		hold = hold->next;
+	}
+	return (0);
 }

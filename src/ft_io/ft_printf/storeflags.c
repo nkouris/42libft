@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 14:25:09 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/12 18:18:17 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 12:23:39 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	store_padp(const char **format, t_flags *flags, int *found,
 		}
 		else
 		{
-			while (ft_isdigit(**format))
+			while (IS_DIGIT(**format))
 			{
 				num = *(*format)++ - '0';
 				i = (i * 10) + num;
@@ -50,10 +50,10 @@ static void	store_padw(const char **format, t_flags *flags, int *found,
 
 	num = 0;
 	i = 0;
-	if ((ft_isdigit(**format) && flags->fieldwidth < 0 && **format != '0'))
+	if ((IS_DIGIT(**format) && flags->fieldwidth < 0 && **format != '0'))
 	{
 		(*found)++;
-		while (ft_isdigit(**format))
+		while (IS_DIGIT(**format))
 		{
 			num = *(*format)++ - '0';
 			i = (i * 10) + num;
@@ -96,7 +96,7 @@ void		store_pre(const char **format, t_flags *flags, va_list *args)
 
 	i = 0;
 	j = 0;
-	while (**format && !(ft_isalpha(**format)) && j < 2)
+	while (**format && !(IS_ALPHA(**format)) && j < 2)
 	{
 		found = 0;
 		if (**format == '%' && j < 2)
@@ -109,7 +109,7 @@ void		store_pre(const char **format, t_flags *flags, va_list *args)
 		while (((**format == 'l' || **format == 'j'
 				|| **format == 'z' || **format == 'h') && i < 2))
 			flags->lenmod[i++] = *(*format)++;
-		if (!found && !(ft_isalpha(**format)) && **format)
+		if (!found && !(IS_ALPHA(**format)) && **format)
 			(*format)++;
 	}
 }

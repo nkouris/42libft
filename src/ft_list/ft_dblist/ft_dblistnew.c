@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dblistpop.c                                     :+:      :+:    :+:   */
+/*   ft_dblistnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 17:37:10 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:04:24 by nkouris          ###   ########.fr       */
+/*   Created: 2018/02/01 14:12:11 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/20 13:15:56 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dblist.h"
+#include "ft_list.h"
 
-t_dblist	*ft_dblistpop(t_dblist *node)
+t_dblist	*ft_dblistnew(void *content, size_t content_size)
 {
-	t_dblist	*tprec;
-	t_dblist	*tnext;
+	t_dblist	*head;
 
-	tprec = node->prec;
-	tnext = node->next;
-	node->next = 0;
-	node->prec = 0;
-	if (tprec)
-		tprec->next = tnext;
-	if (tnext)
-		tnext->prec = tprec;
-	return (tnext);
+	if (!(head = (t_dblist *)ft_memalloc(sizeof(t_dblist)))
+		|| !(head->data = ft_memalloc(content_size)))
+		return (0);
+	if (!content)
+		content_size = 0;
+	head->data = ft_memmove(head->data, content, content_size);
+	head->d_size = content_size;
+	free(content);
+	return (head);
 }

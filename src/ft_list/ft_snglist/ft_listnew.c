@@ -6,11 +6,11 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 18:07:41 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 18:09:39 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:17:54 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_snglist.h"
+#include "ft_list.h"
 
 t_list	*ft_listnew(void *content, size_t content_size)
 {

@@ -6,13 +6,13 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 13:51:22 by nkouris           #+#    #+#             */
-/*   Updated: 2017/09/29 01:19:35 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:57:25 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_num.h"
 
-static int	count_num(int p)
+static int	itoa_count_num(int p)
 {
 	int len;
 
@@ -47,7 +47,7 @@ char		*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	length = count_num(n);
+	length = itoa_count_num(n);
 	result = ft_strnew(length);
 	if (!result)
 		return (0);

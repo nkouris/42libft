@@ -34,15 +34,15 @@ OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(SRC_IO_GNL)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_LIST_DBLIST), $(SRCDIR_LIST_DBLIST))), \
+		  $(addprefix $(SRCDIR_LIST), $(SRCDIR_LIST_DBLIST))), \
 		  $(SRC_LIST_DBLIST)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_LIST_QUEUE), $(SRCDIR_LIST_QUEUE))), \
+		  $(addprefix $(SRCDIR_LIST), $(SRCDIR_LIST_QUEUE))), \
 		  $(SRC_LIST_QUEUE)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
-		  $(addprefix $(SRCDIR_LIST_SNGLIST), $(SRCDIR_LIST_SNGLIST))), \
+		  $(addprefix $(SRCDIR_LIST), $(SRCDIR_LIST_SNGLIST))), \
 		  $(SRC_LIST_SNGLIST)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), $(SRCDIR_MEM)), \
@@ -165,14 +165,14 @@ SRC_STR =	\
 			ft_strlen \
 			ft_strmap \
 			ft_strmapi \
-			ft_strat \
-			ft_strhr \
-			ft_strmp \
-			ft_strpy \
+			ft_strcat \
+			ft_strchr \
+			ft_strcmp \
+			ft_strcpy \
 			ft_strnequ \
 			ft_strnew \
 			ft_strnstr \
-			ft_strhr \
+			ft_strrchr \
 			ft_strsplit \
 			ft_strstr \
 			ft_strsub \
@@ -188,7 +188,7 @@ debug: CFLAGS += -g -fsanitize=address -fsanitize=null $(NAME)
 
 $(NAME): $(OBJSRC)
 	@ echo "$(YELLOW)Building library$(RES)"
-	ar -rcs $(OBJSRC) $(NAME)
+	ar -rc $@ $(OBJSRC)
 
 %.o: %.c
 	@ echo "$(YELLOW)Compiling $<...$(RES)"

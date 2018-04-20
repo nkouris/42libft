@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushfront.c                                     :+:      :+:    :+:   */
+/*   ft_popfront.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 15:22:50 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 15:49:24 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/18 15:26:00 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/20 13:17:06 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_queue.h"
+#include "ft_list.h"
 
 /*
 **		Using a doubly linked list, as defined in libft.h
@@ -27,25 +27,23 @@
 **				|
 */
 
-void		ft_pushfirst(t_queue *key, t_dblist *data)
+t_dblist	*ft_popfirst(t_queue *key)
 {
 	t_dblist	*temp;
 
-	if (key)
+	if (!key)
+		return (0);
+	else
 	{
-		key->qlen++;
-		if (!key->first)
+		if (key->first)
 		{
-			key->first = data;
-			key->last = data;
-		}
-		else
-		{
+			key->qlen ? key->qlen-- : key->qlen;
 			temp = key->first;
-			data->next = temp;
-			data->prec = 0;
-			temp->prec = data;
-			key->first = data;
+			key->first = key->first->next;
+			key->first ? key->first->prec = 0 : key->first;
+			temp->next = 0;
+			return (temp);
 		}
 	}
+	return (0);
 }

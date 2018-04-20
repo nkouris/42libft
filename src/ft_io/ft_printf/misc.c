@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:54:39 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/12 18:17:57 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 12:22:37 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		upper(char *str)
 {
 	while (*str)
 	{
-		if (ft_isalpha(*str))
+		if (IS_ALPHA(*str))
 			*str -= 32;
 		str++;
 	}

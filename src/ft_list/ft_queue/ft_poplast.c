@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_enqueue.c                                       :+:      :+:    :+:   */
+/*   ft_poplast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/18 15:20:46 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/18 15:49:18 by nkouris          ###   ########.fr       */
+/*   Created: 2018/03/18 15:28:12 by nkouris           #+#    #+#             */
+/*   Updated: 2018/04/20 13:17:13 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_queue.h"
+#include "ft_list.h"
 
 /*
 **		Using a doubly linked list, as defined in libft.h
@@ -27,15 +27,23 @@
 **				|
 */
 
-int			ft_enqueue(t_queue **key, void *data, size_t size)
+t_dblist	*ft_poplast(t_queue *key)
 {
-	t_dblist	*add;
+	t_dblist	*temp;
 
-	if (!(add = ft_dblistnew(data, size)))
+	if (!key)
 		return (0);
-	if (!(*key)->first)
-		ft_pushfirst(*key, add);
 	else
-		ft_pushlast(*key, add);
-	return (1);
+	{
+		if (key->last)
+		{
+			key->qlen ? key->qlen-- : key->qlen;
+			temp = key->last;
+			key->last = key->last->prec;
+			key->last ? key->last->next = 0 : key->last;
+			temp->prec = 0;
+			return (temp);
+		}
+	}
+	return (0);
 }

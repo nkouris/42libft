@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 17:29:39 by nkouris           #+#    #+#             */
-/*   Updated: 2018/03/02 19:56:10 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/20 13:48:13 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	skip_spaces(const char *str)
 	return (i);
 }
 
-long		ft_atoi_base(const char *str, int base)
+long		ft_atol_base(const char *str, int base)
 {
 	int		sign;
 	long	i;
