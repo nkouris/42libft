@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 17:29:39 by nkouris           #+#    #+#             */
-/*   Updated: 2018/04/26 14:29:01 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/25 18:54:50 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	skip_spaces(const char *str)
 	return (i);
 }
 
-long		ft_atol(const char *str)
+long		ft_natol(const char *str, size_t n)
 {
 	int		sign;
 	int		i;
@@ -34,7 +34,7 @@ long		ft_atol(const char *str)
 	sign = 1;
 	i = 0;
 	j = 0;
-	while (str[i] != '\0')
+	while (i < n && str[i] != '\0')
 	{
 		i = skip_spaces(str);
 		if (str[i] == '-')

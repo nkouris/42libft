@@ -176,6 +176,10 @@ SRC_STR =	\
 			ft_strsplit \
 			ft_strstr \
 			ft_strsub \
+        	ft_strncat \
+        	ft_strnchr \
+        	ft_strncmp \
+        	ft_strncpy \
 			ft_strtrim
 
 ################################################################################
@@ -184,23 +188,24 @@ SRC_STR =	\
 
 all: $(NAME)
 
-debug: CFLAGS += -g -fsanitize=address -fsanitize=null $(NAME)
+debug: CFLAGS += -g -fsanitize=address -fsanitize=null
+debug: $(NAME)
 
 $(NAME): $(OBJSRC)
-	@ echo "$(YELLOW)Building library$(RES)"
+	@ echo "$(CYAN)Building library$(RES)"
 	ar -rc $@ $(OBJSRC)
 	@ echo "$(GREEN)Library Made$(RES)"
 
 %.o: %.c
-	@ echo "$(YELLOW)Compiling $<...$(RES)"
+	@ echo "$(CYAN)Compiling $<...$(RES)"
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@/bin/rm -f $(OBJSRC)
+	rm -f $(OBJSRC)
 	@ echo "$(RED)Cleaning folders of object files...$(RES)"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME)
 	@ echo "$(RED)Removing library...$(RES)"
 
 re: fclean all
