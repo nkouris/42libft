@@ -11,6 +11,7 @@ SRCDIR = src/
 SRCDIR_IO = ft_io/
 SRCDIR_IO_FTPRINTF = ft_printf/
 SRCDIR_IO_GNL = gnl/
+SRCDIR_IO_GETOPT = ft_getopts/
 SRCDIR_LIST = ft_list/
 SRCDIR_LIST_DBLIST = ft_dblist/
 #SRCDIR_LIST_PQUEUE = ft_pqueue/
@@ -32,6 +33,10 @@ OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
 		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_GNL))), \
 		  $(SRC_IO_GNL)))
+OBJSRC += $(patsubst %, %.o, $(addprefix \
+		  $(addprefix $(SRCDIR), \
+		  $(addprefix $(SRCDIR_IO), $(SRCDIR_IO_GETOPT))), \
+		  $(SRC_IO_GETOPT)))
 OBJSRC += $(patsubst %, %.o, $(addprefix \
 		  $(addprefix $(SRCDIR), \
 		  $(addprefix $(SRCDIR_LIST), $(SRCDIR_LIST_DBLIST))), \
@@ -91,6 +96,9 @@ SRC_IO_FTPRINTF =	\
 
 SRC_IO_GNL =	\
 	        get_next_line
+
+SRC_IO_GETOPT =	\
+			ft_getopts
 
 ################################################################################
 # LIST SOURCE FILES                                                            #
