@@ -196,7 +196,7 @@ SRC_STR =	\
 
 all: $(NAME)
 
-debug: CFLAGS += -g -fsanitize=address -fsanitize=null
+debug: CFLAGS += -g -fsanitize=address -fsanitize=null -DDEBUG
 debug: $(NAME)
 
 $(NAME): $(OBJSRC)

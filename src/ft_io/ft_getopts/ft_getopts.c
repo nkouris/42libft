@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 15:36:48 by nkouris           #+#    #+#             */
-/*   Updated: 2018/05/29 16:46:48 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/05/31 16:57:15 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,43 +32,46 @@ static inline __attribute__((always_inline)) int32_t
 	i = 0;
 	if (!(opts->nparams))
 	{
-		if (opts->handler(*argv, NULL, opts) == EXIT_FAILURE)
+		if (opts->handler(NULL, opts) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 	}
 	else
 	{
 		(*word)++;
-		if (opts->handler(*argv, (argv + *word), opts) == EXIT_FAILURE)
+		if (!*(argv + *word)
+			|| opts->handler((argv + *word), opts) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
+		if (opts->nparams > 1)
+			*word += (opts->nparams - 1);
 	}
 	return (EXIT_SUCCESS);
 }
 
 static inline __attribute__((always_inline)) int32_t	
-			match_opts(t_opts **opts, char **argv, int32_t *word)
+			match_opts(t_opts *opts, char **argv, int32_t *word)
 {
 	int32_t	i;
 
 	i = 0;
-	while (opts[i])
+	while (opts->opt)
 	{
-		if (ft_strequ((opts[i])->opt, (argv[*word])))
+		if (ft_strequ(opts->opt, (argv[*word])))
 		{
-			if (param_action(opts[i], argv, word) == EXIT_FAILURE)
+			if (param_action(opts, argv, word) == EXIT_FAILURE)
 				return (EXIT_FAILURE);
 			else
 				return (EXIT_SUCCESS);
 		}
-		i++;
+		opts++;
 	}
 	return (EXIT_FAILURE);
 }
 
-int32_t		ft_getopts(t_opts **opts, char **argv)
+int32_t		ft_getopts(t_opts *opts, char **argv)
 {
 	int32_t	i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		while (IS_WHSPC(*(argv[i])))
@@ -81,6 +84,9 @@ int32_t		ft_getopts(t_opts **opts, char **argv)
 			if (match_opts(opts, argv, &i) == EXIT_FAILURE)
 				return (i);
 		}
+		else
+			return (i);
+		i++;
 	}
 	return (EXIT_SUCCESS);
 }
