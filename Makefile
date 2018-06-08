@@ -173,7 +173,7 @@ SRC_STR =	\
 			ft_strlen \
 			ft_strmap \
 			ft_strmapi \
-			ft_strcat \
+			ft_strfreecat \
 			ft_strchr \
 			ft_strcmp \
 			ft_strcpy \
