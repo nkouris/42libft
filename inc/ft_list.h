@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 17:59:42 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/07 15:28:59 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/08 16:41:21 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,18 @@ typedef struct		s_ffqueue
 
 t_dblist			*ft_dblistnew(void *content, size_t content_size);
 t_dblist			*ft_dblistpop(t_dblist *node);
+void				ft_dblistinsert(t_dblist *current, t_dblist *insert);
 t_dblist			*ft_dblmergesort(t_dblist *head, int (*f)(void *, void *));
 
 /*
-**	Priority queues, using doubly linked list
+**	Queues, using doubly linked list
 */
 
 t_dblist			*ft_popfirst(t_queue *key);
 t_dblist			*ft_poplast(t_queue *key);
-int					ft_enqueue(t_queue **key, void *data, size_t size);
+int					ft_enqueue(t_queue *key, void *data, size_t size);
+int					ft_penqueue(t_queue *key, void *data, size_t size,
+					int32_t (*f)(t_dblist *, t_dblist *));
 void				ft_pushfirst(t_queue *key, t_dblist *data);
 void				ft_pushlast(t_queue *key, t_dblist *data);
 void				ft_queue_postmsort(t_queue *key);

@@ -106,11 +106,13 @@ SRC_IO_GETOPT =	\
 
 SRC_LIST_DBLIST =	\
 	        ft_dblistnew \
+			ft_dblistinsert \
 	        ft_dblistpop \
 	        ft_dblmergesort
 
 SRC_LIST_QUEUE =	\
         	ft_enqueue \
+			ft_penqueue \
         	ft_popfirst \
         	ft_poplast \
         	ft_pushfirst \
