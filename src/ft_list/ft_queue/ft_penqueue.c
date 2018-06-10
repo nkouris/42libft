@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:38:12 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/08 16:41:37 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/09 18:01:13 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ int			ft_penqueue(t_queue *key, void *data, size_t size,
 	}
 	else
 		add = (t_dblist *)data;
-	insertion_point(key, f, add);
+	if (!(key->first))
+		ft_pushfirst(key, add);
+	else
+		insertion_point(key, f, add);
 	return (1);
 }
