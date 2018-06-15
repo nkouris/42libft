@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:38:12 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/09 18:01:13 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/15 11:00:52 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,18 @@ static __attribute__((always_inline))int32_t	insertion_point(t_queue *key,
 	while (temp)
 	{
 		if (f(temp, add) == 1)
+		{
+			printf("%sLower priority add%s\n", "\033[48;5;57m", "\033[0m");
 			temp = temp->next;
+		}
 		else
 		{
 			if (temp == key->first)
 				ft_pushfirst(key, add);
 			else
 				ft_dblistinsert(temp, add);
+			printf("%sHigher priority add%s\n", "\033[48;5;57m", "\033[0m");
+			break ;
 		}
 	}
 	if (!temp)
@@ -57,6 +62,7 @@ int			ft_penqueue(t_queue *key, void *data, size_t size,
 {
 	t_dblist	*add;
 
+	printf("Beginning PENqueue\n");
 	if (size)
 	{
 		if (!(add = ft_dblistnew(data, size)))

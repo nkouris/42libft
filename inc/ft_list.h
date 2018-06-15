@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 17:59:42 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/08 16:41:21 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/15 13:40:59 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_ffqueue
 t_dblist			*ft_dblistnew(void *content, size_t content_size);
 t_dblist			*ft_dblistpop(t_dblist *node);
 void				ft_dblistinsert(t_dblist *current, t_dblist *insert);
+t_dblist			*ft_dblistcritpop(t_dblist *node, int (*f)(void *));
 t_dblist			*ft_dblmergesort(t_dblist *head, int (*f)(void *, void *));
 
 /*

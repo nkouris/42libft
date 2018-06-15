@@ -108,6 +108,7 @@ SRC_LIST_DBLIST =	\
 	        ft_dblistnew \
 			ft_dblistinsert \
 	        ft_dblistpop \
+			ft_dblistcritpop \
 	        ft_dblmergesort
 
 SRC_LIST_QUEUE =	\
