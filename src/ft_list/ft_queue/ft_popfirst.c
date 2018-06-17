@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:26:00 by nkouris           #+#    #+#             */
-/*   Updated: 2018/04/20 13:17:06 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/17 12:11:09 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_dblist	*ft_popfirst(t_queue *key)
 			temp = key->first;
 			key->first = key->first->next;
 			key->first ? key->first->prec = 0 : key->first;
+			if (key->first == key->last)
+				key->last = NULL;
 			temp->next = 0;
 			return (temp);
 		}
