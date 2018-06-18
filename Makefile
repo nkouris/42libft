@@ -119,7 +119,8 @@ SRC_LIST_QUEUE =	\
         	ft_pushfirst \
         	ft_pushlast \
         	ft_queue_postmsort \
-        	ft_queuedel
+        	ft_queuedel \
+			ft_middel
 
 SRC_LIST_SNGLIST =	\
         	ft_listadd \

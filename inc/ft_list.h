@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 17:59:42 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/15 13:40:59 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/17 16:50:22 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_dblist			*ft_dblmergesort(t_dblist *head, int (*f)(void *, void *));
 
 t_dblist			*ft_popfirst(t_queue *key);
 t_dblist			*ft_poplast(t_queue *key);
+t_dblist			*ft_middel(t_queue *key, t_dblist *remove);
 int					ft_enqueue(t_queue *key, void *data, size_t size);
 int					ft_penqueue(t_queue *key, void *data, size_t size,
 					int32_t (*f)(t_dblist *, t_dblist *));

@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 15:28:12 by nkouris           #+#    #+#             */
-/*   Updated: 2018/04/20 13:17:13 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/06/17 16:49:53 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_dblist	*ft_poplast(t_queue *key)
 			temp = key->last;
 			key->last = key->last->prec;
 			key->last ? key->last->next = 0 : key->last;
+			if (key->last == key->first)
+				key->first = NULL;
 			temp->prec = 0;
 			return (temp);
 		}
