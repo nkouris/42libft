@@ -153,7 +153,9 @@ SRC_NUM =	\
 			ft_atol \
 			ft_atol_base \
 			ft_itoa \
-			ft_numlen
+			ft_numlen \
+			ft_itoa_base \
+			ft_uitoa_base
 
 ################################################################################
 # NUM SOURCE FILES                                                             #
