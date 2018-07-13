@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 18:18:39 by nkouris           #+#    #+#             */
-/*   Updated: 2018/07/10 17:02:47 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/07/13 11:47:06 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char				*ft_itoa(int n);
 int					ft_numlen(int num);
 char				*ft_itoa_base(int n, int base);
 char				*ft_uitoa_base(unsigned int n, int base);
+char				*ft_nuitoa_base(unsigned int n, int base, int length);
 
 #endif

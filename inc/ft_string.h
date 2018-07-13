@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 18:21:08 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/07 18:52:00 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/07/11 18:29:32 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcat(char *dst, const char *src);
 char				*ft_strfreecat(char *dst, char *src);
+char				*ft_rstrfreecat(char *dst, char *src);
 char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
 char				*ft_strcpy(char *dst, const char *src);

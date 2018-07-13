@@ -155,7 +155,8 @@ SRC_NUM =	\
 			ft_itoa \
 			ft_numlen \
 			ft_itoa_base \
-			ft_uitoa_base
+			ft_uitoa_base \
+			ft_nuitoa_base
 
 ################################################################################
 # NUM SOURCE FILES                                                             #
@@ -180,6 +181,7 @@ SRC_STR =	\
 			ft_strmap \
 			ft_strmapi \
 			ft_strfreecat \
+			ft_rstrfreecat \
 			ft_strchr \
 			ft_strcmp \
 			ft_strcpy \
