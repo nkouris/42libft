@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 13:51:22 by nkouris           #+#    #+#             */
-/*   Updated: 2018/07/13 11:46:27 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/07/14 12:02:41 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ static int		count_num_base(unsigned long n, unsigned long base)
 
 char		*ft_uitoa_base(unsigned int n, int base)
 {
-	int		length;
-	char	*result;
+	int			length;
+	static char	result[12];
 
+	ft_bzero(result, 12);
 	length = count_num_base(n, base);
-	result = ft_strnew(length);
-	if (!result)
-		return (NULL);
-	else if (!n)
+	if (!n)
 		result[0] = '0';
 	while (n)
 	{

@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 13:51:22 by nkouris           #+#    #+#             */
-/*   Updated: 2018/07/13 12:47:55 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/07/14 14:07:36 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 
 char		*ft_nuitoa_base(unsigned int n, int base, int length)
 {
-	char	*result;
+	static char	result[3];
 
+	ft_bzero(result, 3);
 	printf("incoming : %u\t", n);
-	result = ft_strnew(length);
-	if (!result)
-		return (NULL);
 	while (length)
 	{
 		result[--length] = BASEKEY[n % base];
