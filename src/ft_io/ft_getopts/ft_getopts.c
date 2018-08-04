@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 15:36:48 by nkouris           #+#    #+#             */
-/*   Updated: 2018/07/09 16:48:13 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/05/31 16:57:15 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,47 +24,69 @@
 
 #include "ft_getopts.h"
 
-static inline __attribute__((always_inline)) int32_t 
-			match_opts(t_opts *opts, char *argv)
+static inline __attribute__((always_inline)) int32_t	
+			param_action(t_opts *opts, char **argv, int32_t *word)
 {
 	int32_t	i;
 
 	i = 0;
-	while (*argv)
+	if (!(opts->nparams))
 	{
-		while (opts->opt)
+		if (opts->handler(NULL, opts) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
+	}
+	else
+	{
+		(*word)++;
+		if (!*(argv + *word)
+			|| opts->handler((argv + *word), opts) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
+		if (opts->nparams > 1)
+			*word += (opts->nparams - 1);
+	}
+	return (EXIT_SUCCESS);
+}
+
+static inline __attribute__((always_inline)) int32_t	
+			match_opts(t_opts *opts, char **argv, int32_t *word)
+{
+	int32_t	i;
+
+	i = 0;
+	while (opts->opt)
+	{
+		if (ft_strequ(opts->opt, (argv[*word])))
 		{
-			if (ft_strequ(opts->opt, argv))
-			{
-				if (opts->handler() == EXIT_FAILURE)
-				{
-					ft_printf("fail\n");
-					return (EXIT_FAILURE);
-				}
-				else
-					return (EXIT_SUCCESS);
-			}
-			opts++;
+			if (param_action(opts, argv, word) == EXIT_FAILURE)
+				return (EXIT_FAILURE);
+			else
+				return (EXIT_SUCCESS);
 		}
-		argv++;
+		opts++;
 	}
 	return (EXIT_FAILURE);
 }
 
-int32_t		ft_getopts(t_opts *opts, char *argv)
+int32_t		ft_getopts(t_opts *opts, char **argv)
 {
 	int32_t	i;
 
 	i = 1;
-	while (IS_WHSPC(*(argv)))
-		argv++;
-	if (*argv == '-')
+	while (argv[i])
 	{
-		argv++;
-		if (match_opts(opts, argv) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
+		while (IS_WHSPC(*(argv[i])))
+			(argv[i])++;
+		if (*(argv[i]) == '-')
+		{
+			(argv[i])++;
+			if (*(argv[i]) == '-')
+				(argv[i])++;
+			if (match_opts(opts, argv, &i) == EXIT_FAILURE)
+				return (i);
+		}
+		else
+			return (i);
+		i++;
 	}
-	else
-		return (-1);
 	return (EXIT_SUCCESS);
 }
