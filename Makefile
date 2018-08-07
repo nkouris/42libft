@@ -217,12 +217,12 @@ $(NAME): $(OBJSRC)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJSRC)
 	@ echo "$(RED)Cleaning folders of object files...$(RES)"
+	rm -f $(OBJSRC)
 
 fclean: clean
-	rm -f $(NAME)
 	@ echo "$(RED)Removing library...$(RES)"
+	rm -f $(NAME)
 
 re: fclean all
 	@ echo "$(GREEN)Library Remade$(RES)"
