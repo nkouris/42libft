@@ -71,7 +71,7 @@ int		main(int argc, char **argv)
 	bzero(&tree, sizeof(t_rbtree));
 	if (argc < 2)
 	{
-		dprintf(2, "Please enter a valid string of ints\n");
+		d//printf(2, "Please enter a valid string of ints\n");
 		return (-1);
 	}
 	else

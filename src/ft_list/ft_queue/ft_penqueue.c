@@ -39,7 +39,7 @@ static __attribute__((always_inline))int32_t	insertion_point(t_queue *key,
 	{
 		if (f(temp, add) == 1)
 		{
-			printf("%sLower priority add%s\n", "\033[48;5;57m", "\033[0m");
+			//printf("%sLower priority add%s\n", "\033[48;5;57m", "\033[0m");
 			temp = temp->next;
 		}
 		else
@@ -48,7 +48,7 @@ static __attribute__((always_inline))int32_t	insertion_point(t_queue *key,
 				ft_pushfirst(key, add);
 			else
 				ft_dblistinsert(temp, add);
-			printf("%sHigher priority add%s\n", "\033[48;5;57m", "\033[0m");
+			//printf("%sHigher priority add%s\n", "\033[48;5;57m", "\033[0m");
 			break ;
 		}
 	}
@@ -62,7 +62,7 @@ int			ft_penqueue(t_queue *key, void *data, size_t size,
 {
 	t_dblist	*add;
 
-	printf("Beginning PENqueue\n");
+	//printf("Beginning PENqueue\n");
 	if (size)
 	{
 		if (!(add = ft_dblistnew(data, size)))

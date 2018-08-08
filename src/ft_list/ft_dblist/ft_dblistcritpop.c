@@ -21,7 +21,7 @@ t_dblist	*ft_dblistcritpop(t_dblist *node, int (*f)(void *))
 	{
 		if (f(hold->data))
 		{
-			printf("%sQueued event removed%s\n", "\033[48;5;57m", "\033[0m");
+			//printf("%sQueued event removed%s\n", "\033[48;5;57m", "\033[0m");
 			ft_dblistpop(hold);
 			return (hold);
 		}
