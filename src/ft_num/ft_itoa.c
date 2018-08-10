@@ -6,7 +6,7 @@
 /*   By: nkouris <nkouris@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 13:51:22 by nkouris           #+#    #+#             */
-/*   Updated: 2018/06/07 19:54:07 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/08/09 21:46:38 by nkouris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,14 @@ static int	find_sign(int o)
 
 char		*ft_itoa(int n)
 {
-	int		length;
-	char	*result;
+	int			length;
+	static char	result[12];
 
+	ft_bzero(result, 12);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	length = itoa_count_num(n);
-	result = ft_strnew(length);
-	if (!result)
-		return (0);
-	else if (n == 0)
+	if (n == 0)
 		result[0] = '0';
 	if (find_sign(n))
 	{
